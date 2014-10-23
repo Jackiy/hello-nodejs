@@ -1,0 +1,13 @@
+[
+	{
+		"path" : "/order/make",
+		"router" : "./routes/makeorder",
+		"validator": "./validator/order"
+	},
+	{
+		"path" : "/order/confirm",
+		"router" : "./routes/confirmorder",
+		"validator": "./validator/order"
+	}
+
+]
