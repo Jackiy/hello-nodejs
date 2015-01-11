@@ -1,5 +1,15 @@
 [
 	{
+		"path" : "/",
+		"router" : "./routes/index",
+		"validator": "./validator/order"
+	},
+	{
+		"path" : "/users",
+		"router" : "./routes/users",
+		"validator": "./validator/order"
+	},
+	{
 		"path" : "/order/make",
 		"router" : "./routes/makeorder",
 		"validator": "./validator/order"

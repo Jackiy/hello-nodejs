@@ -1,13 +1,12 @@
+"use strict";
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var consolidate = require('consolidate');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
 var hbs = require('hbs');
 
 var pathConfig = require('./config/mapping.json');
@@ -31,8 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+// Add the global handler for all the request.
+app.all("/*", function(req, res, next){
+    console.log("The global handler.");
+    next();
+});
+
 for(var i = 0 ; i < pathConfig.length; i++){
     app.use(pathConfig[i].path, require(pathConfig[i].router));
 }
